@@ -1,0 +1,81 @@
+.toggle,
+.close {
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.toggle {
+  color: var(--grey-dark);
+}
+
+.close {
+  color: var(--black);
+}
+
+/* full-screen white panel (Figma 390x844) */
+.menu {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: var(--white);
+  color: var(--black);
+  /* phone turned sideways: the screen is lower than the menu */
+  overflow-y: auto;
+}
+
+.menu[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* the page behind does not scroll while the menu is open */
+:global(body):has(.menu[open]) {
+  overflow: hidden;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.top a {
+  display: flex;
+}
+
+.nav,
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* 1px line between two links, 28px from each (27px + the 1px border) */
+.links li + li {
+  padding-top: 27px;
+  border-top: 1px solid var(--grey-light);
+}
+
+.link {
+  display: inline-block;
+  font-size: 24px;
+}
+
+.link:hover {
+  color: var(--main-red);
+}
+
+.add {
+  width: 200px;
+}

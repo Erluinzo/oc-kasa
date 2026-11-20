@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeartIcon, MessageIcon } from "@/components/Icons";
+import MobileMenu from "@/components/MobileMenu";
 import styles from "./Header.module.css";
 
 /**
- * Site header: links, logo and favorites / messages icons (Figma "Menu").
- * Server component: it has no state, so it sends no JavaScript to the browser.
+ * Site header (Figma "Menu"): links, logo and favorites / messages icons,
+ * or on small screens the small logo and the menu button.
+ * Server component: only the mobile menu inside it runs in the browser.
  */
 export default function Header() {
   return (
@@ -48,6 +50,12 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+      <div className={styles.mobile}>
+        <Link href="/" className={styles.logo}>
+          <Image src="/logo-picto.svg" alt="Kasa, accueil" width={46} height={53} />
+        </Link>
+        <MobileMenu />
+      </div>
     </header>
   );
 }

@@ -1,0 +1,21 @@
+/* Figma "call to action": used on links and buttons */
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 32px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--main-red);
+  color: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Figma "Focus" state */
+.button:hover,
+.button:focus-visible {
+  background: var(--dark-orange);
+}
