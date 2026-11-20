@@ -1,0 +1,81 @@
+.header {
+  padding: 40px 30px 0;
+}
+
+/* white card 782px wide, centered (Figma "Menu") */
+.nav {
+  max-width: 782px;
+  margin: 0 auto;
+  padding: 8px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(182, 182, 182, 0.05);
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.link {
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+/* bold red copy shown on hover, centered on the normal text: the bold text is wider,
+   but the links keep their Figma width and do not move. "/ ''" hides it from screen readers */
+.link::after {
+  content: attr(data-text) / "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--main-red);
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.link:hover {
+  color: transparent;
+}
+
+.link:hover::after {
+  opacity: 1;
+}
+
+.add {
+  color: var(--main-red);
+}
+
+.logo {
+  display: flex;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px;
+  color: var(--main-red);
+}
+
+.icon {
+  display: flex;
+}
+
+.icon:hover {
+  color: var(--dark-orange);
+}
+
+.separator {
+  width: 1px;
+  height: 5px;
+  background: var(--main-red);
+}
