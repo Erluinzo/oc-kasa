@@ -15,11 +15,26 @@ npm install
 
 ## Run
 
+1. Start the back end ([Kasa API](https://github.com/OpenClassrooms-Student-Center/dev-react-P12)) on port 4000, in its own folder:
+
+```bash
+npm install
+PORT=4000 npm start
+```
+
+2. Start the front end:
+
 ```bash
 npm run dev
 ```
 
 Then open http://localhost:3000.
+
+The API address is `http://localhost:4000` by default. To use another one, set `API_URL` in a `.env.local` file:
+
+```
+API_URL=http://localhost:4000
+```
 
 ## Folders
 
