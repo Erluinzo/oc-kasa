@@ -27,7 +27,7 @@ export default function Header() {
           </li>
         </ul>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.svg" alt="Kasa, accueil" width={113} height={40} priority />
+          <Image src="/logo.svg" alt="Kasa, accueil" width={113} height={40} loading="eager" />
         </Link>
         <ul className={styles.group}>
           <li>

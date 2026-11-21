@@ -1,14 +1,28 @@
-import { getProperties, getProperty } from "@/lib/api";
+import Image from "next/image";
+import { getProperties } from "@/lib/api";
+import styles from "./home.module.css";
 
-//temporary page: shows the API data until the real home page is built
 export default async function Home() {
   const properties = await getProperties();
-  const first = await getProperty(properties[0].id);
 
   return (
-    <main>
-      <h1>Kasa</h1>
-      <p>{properties.length} logements</p>
+    <main className={styles.main}>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>
+          Chez vous, <br className={styles.break} />
+          partout et ailleurs
+        </h1>
+        <p>
+          Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec
+          soin par nos hôtes.
+        </p>
+        <div className={styles.photo}>
+          {/* decorative photo: empty alt. preload: it is the largest image of the page (LCP) */}
+          <Image src="/hero.jpg" alt="" width={1117} height={894} sizes="1117px" preload />
+        </div>
+      </section>
+
+      {/* temporary list: replaced by the property cards in the next sub-step */}
       <ul>
         {properties.map((property) => (
           <li key={property.id}>
@@ -16,8 +30,6 @@ export default async function Home() {
           </li>
         ))}
       </ul>
-      <h2>Détail du premier logement</h2>
-      <pre>{JSON.stringify(first, null, 2)}</pre>
     </main>
   );
 }

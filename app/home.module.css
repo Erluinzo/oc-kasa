@@ -1,0 +1,57 @@
+.main {
+  width: 100%;
+  max-width: 1163px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.title {
+  color: var(--main-red);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.break {
+  display: none;
+}
+
+/* the title does not fit on one line: cut it after "Chez vous," like Figma mobile */
+@media (width < 520px) {
+  .break {
+    display: inline;
+  }
+}
+
+/* rounded frame 458px high. The photo keeps the Figma size (1117x894) and stays centered:
+   on a phone the frame shows the middle of the same photo, like in Figma */
+.photo {
+  position: relative;
+  width: 100%;
+  height: 458px;
+  margin-top: 32px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.photo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+/* Figma mobile: 51px under the bar, 24px on the sides */
+@media (width < 900px) {
+  .main {
+    margin-top: 51px;
+  }
+}
