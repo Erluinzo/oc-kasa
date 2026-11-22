@@ -2,7 +2,10 @@
   width: 100%;
   max-width: 1163px;
   margin: 40px auto 0;
-  padding: 0 24px;
+  padding: 0 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .hero {
@@ -49,9 +52,15 @@
   transform: translate(-50%, -50%);
 }
 
-/* Figma mobile: 51px under the bar, 24px on the sides */
+/* Figma mobile: 51px between blocks, cards 16px from the sides, hero text and photo 24px */
 @media (width < 900px) {
   .main {
     margin-top: 51px;
+    padding: 0 16px 51px;
+    gap: 51px;
+  }
+
+  .hero {
+    padding: 0 8px;
   }
 }

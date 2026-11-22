@@ -1,0 +1,8 @@
+/* Figma cards are 355px wide with 24px between them: as many as fit, centered.
+   min(100%, 355px) lets a card shrink on screens smaller than 355px */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 355px), 355px));
+  justify-content: center;
+  gap: 24px;
+}

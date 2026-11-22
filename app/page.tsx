@@ -1,4 +1,5 @@
 import Image from "next/image";
+import PropertyList from "@/components/PropertyList";
 import { getProperties } from "@/lib/api";
 import styles from "./home.module.css";
 
@@ -21,15 +22,7 @@ export default async function Home() {
           <Image src="/hero.jpg" alt="" width={1117} height={894} sizes="1117px" preload />
         </div>
       </section>
-
-      {/* temporary list: replaced by the property cards in the next sub-step */}
-      <ul>
-        {properties.map((property) => (
-          <li key={property.id}>
-            {property.title} ({property.location}) : {property.price_per_night} € / nuit
-          </li>
-        ))}
-      </ul>
+      <PropertyList properties={properties} />
     </main>
   );
 }

@@ -1,0 +1,85 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: var(--white);
+}
+
+/* the whole card shows the focus ring of its link */
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--main-red);
+  outline-offset: 2px;
+}
+
+.photo {
+  position: relative;
+  height: 376px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+/* Figma: grey square button 32px, 16px from the top right corner */
+.heart {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  display: flex;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--grey-light);
+  color: var(--grey-dark);
+}
+
+/* white part 176px high: title and place at the top, price at the bottom */
+.details {
+  flex: 1;
+  min-height: 176px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 16px 24px 24px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* invisible layer over the whole card: a click anywhere opens the property */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.location {
+  color: var(--grey-dark);
+}
+
+.price {
+  color: var(--grey-dark);
+}
+
+.amount {
+  margin-right: 6px;
+  color: var(--black);
+  font-weight: 500;
+}

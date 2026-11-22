@@ -18,6 +18,21 @@ export function HeartIcon() {
 }
 
 /**
+ * Full heart (Figma "Icones / Favoris" on the property cards).
+ */
+export function HeartFullIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+      <path
+        transform="translate(3.2 3.544)"
+        fill="currentColor"
+        d="M0 2.742C0 6.434 4.8 8.914 4.8 8.914C4.8 8.914 9.6 6.436 9.6 2.742C9.6 1.228 8.372 0 6.858 0C6.034 0 5.304 0.37 4.8 0.946C4.298 0.37 3.566 0 2.742 0C1.228 -0.002 0 1.226 0 2.742Z"
+      />
+    </svg>
+  );
+}
+
+/**
  * Three lines menu icon (Figma "Icones / menu", mobile size).
  */
 export function MenuIcon() {
