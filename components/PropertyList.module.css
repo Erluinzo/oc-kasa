@@ -6,3 +6,23 @@
   justify-content: center;
   gap: 24px;
 }
+
+/* loading card: white card size, grey photo place, soft blink */
+.skeleton {
+  height: 552px;
+  border-radius: 10px;
+  background: linear-gradient(var(--grey-light) 376px, var(--white) 376px);
+  animation: blink 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

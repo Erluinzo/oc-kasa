@@ -52,6 +52,61 @@
   transform: translate(-50%, -50%);
 }
 
+/* "Comment ça marche ?" white block */
+.how {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  border-radius: 10px;
+  background: var(--white);
+  text-align: center;
+}
+
+.howIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.howTitle {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* 3 boxes of 270px, they get smaller if the block is too narrow */
+.steps {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 270px));
+  justify-content: center;
+  gap: 16px;
+}
+
+.step {
+  min-height: 199px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  /* Figma 44px / 22px include the 1px border */
+  padding: 43px 21px;
+  border: 1px solid var(--grey-light);
+  border-radius: 10px;
+  background: var(--dark-orange);
+  color: var(--white);
+  text-align: left;
+}
+
+.stepTitle {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.stepText {
+  font-size: 12px;
+}
+
 /* Figma mobile: 51px between blocks, cards 16px from the sides, hero text and photo 24px */
 @media (width < 900px) {
   .main {
@@ -62,5 +117,14 @@
 
   .hero {
     padding: 0 8px;
+  }
+
+  .how {
+    padding: 40px 8px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
