@@ -31,9 +31,12 @@ export default function Home() {
         </div>
       </section>
 
-      <Suspense fallback={<PropertyListSkeleton />}>
-        <Properties />
-      </Suspense>
+      {/* id: the 404 page "Logements" button comes here */}
+      <div id="logements">
+        <Suspense fallback={<PropertyListSkeleton />}>
+          <Properties />
+        </Suspense>
+      </div>
 
       <section className={styles.how} aria-labelledby="how-title">
         <div className={styles.howIntro}>

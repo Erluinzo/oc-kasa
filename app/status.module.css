@@ -1,0 +1,29 @@
+/* 404 and error pages (Figma "404"): text and buttons in the middle of the free space */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.intro {
+  max-width: 342px;
+}
+
+.code {
+  color: var(--main-red);
+  font-size: 100px;
+  font-weight: 900;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 200px;
+  /* the Figma frame is 120px high for 86px of buttons: it sets the vertical center */
+  min-height: 120px;
+}
