@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CloseIcon, MenuIcon } from "@/components/Icons";
 import button from "./Button.module.css";
+import picto from "@/public/logo-picto.svg";
 import styles from "./MobileMenu.module.css";
 
 const LINKS = [
@@ -42,7 +43,7 @@ export default function MobileMenu() {
       <dialog ref={dialog} className={styles.menu} aria-label="Menu" onClick={closeOnLink}>
         <div className={styles.top}>
           <Link href="/">
-            <Image src="/logo-picto.svg" alt="Kasa, accueil" width={46} height={53} />
+            <Image src={picto} alt="Kasa, accueil" width={46} height={53} />
           </Link>
           <button
             type="button"

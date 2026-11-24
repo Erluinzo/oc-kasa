@@ -1,4 +1,5 @@
 import Image from "next/image";
+import picto from "@/public/logo-picto.svg";
 import styles from "./Footer.module.css";
 
 /**
@@ -7,7 +8,7 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <Image src="/logo-picto.svg" alt="Kasa" width={46} height={53} />
+      <Image src={picto} alt="Kasa" width={46} height={53} />
       <p className={styles.copyright}>© 2025 Kasa. All rights reserved</p>
     </footer>
   );

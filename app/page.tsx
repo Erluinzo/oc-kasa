@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import PropertyList, { PropertyListSkeleton } from "@/components/PropertyList";
 import { getProperties } from "@/lib/api";
+import hero from "@/public/hero.jpg";
 import styles from "./home.module.css";
 
 /**
@@ -27,7 +28,7 @@ export default function Home() {
         </p>
         <div className={styles.photo}>
           {/* decorative photo: empty alt. preload: it is the largest image of the page (LCP) */}
-          <Image src="/hero.jpg" alt="" width={1117} height={894} sizes="1117px" preload />
+          <Image src={hero} alt="" width={1117} height={894} sizes="1117px" preload />
         </div>
       </section>
 

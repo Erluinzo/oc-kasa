@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeartIcon, MessageIcon } from "@/components/Icons";
 import MobileMenu from "@/components/MobileMenu";
+import logo from "@/public/logo.svg";
+import picto from "@/public/logo-picto.svg";
 import styles from "./Header.module.css";
 
 /**
@@ -27,7 +29,7 @@ export default function Header() {
           </li>
         </ul>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.svg" alt="Kasa, accueil" width={113} height={40} loading="eager" />
+          <Image src={logo} alt="Kasa, accueil" width={113} height={40} loading="eager" />
         </Link>
         <ul className={styles.group}>
           <li>
@@ -52,7 +54,7 @@ export default function Header() {
       </nav>
       <div className={styles.mobile}>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo-picto.svg" alt="Kasa, accueil" width={46} height={53} />
+          <Image src={picto} alt="Kasa, accueil" width={46} height={53} />
         </Link>
         <MobileMenu />
       </div>

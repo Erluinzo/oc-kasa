@@ -1,0 +1,223 @@
+/* Figma: content 971px wide, 86px under the menu and above the footer */
+.main {
+  width: 100%;
+  max-width: 1019px;
+  margin: 86px auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.back {
+  /* Figma sizes include the 1px border (here and on the white cards) */
+  padding: 16px 7px 15px;
+  border-bottom: 1px solid var(--grey-light);
+}
+
+/* Figma "call to action" with icon, grey version */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: var(--grey-light);
+  color: var(--grey-dark);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--black);
+}
+
+/* photos and details on the left, host on the right; the photos get smaller first */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 616px) 345px;
+  grid-template-areas:
+    "gallery host"
+    "info .";
+  justify-content: center;
+  gap: 24px 10px;
+}
+
+.gallery {
+  grid-area: gallery;
+  position: relative;
+  height: 358px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery img {
+  object-fit: cover;
+}
+
+.info,
+.host {
+  border: 1px solid var(--grey-light);
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 23px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--grey-dark);
+}
+
+.price {
+  color: var(--grey-dark);
+}
+
+.amount {
+  margin-right: 6px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categories {
+  gap: 15px;
+}
+
+.groupTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.equipments,
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Figma: 3 tags of 100px on a row */
+.equipments {
+  max-width: 316px;
+}
+
+.equipments .tag {
+  min-width: 100px;
+}
+
+.tags {
+  gap: 18px;
+}
+
+.tag {
+  padding: 8px 16px;
+  border-radius: 5px;
+  background: var(--grey-light);
+  color: var(--grey-dark);
+  font-size: 12px;
+  text-align: center;
+}
+
+.host {
+  grid-area: host;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 23px;
+}
+
+.hostTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.hostRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0;
+  font-size: 16px;
+}
+
+.hostPhoto {
+  flex-shrink: 0;
+  width: 81px;
+  height: 82px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--grey-light);
+}
+
+/* only the star is red */
+.rating svg {
+  color: var(--main-red);
+}
+
+.hostButton {
+  width: 100%;
+}
+
+/* Figma mobile: one column (photos, details, host), 10px between blocks */
+@media (width < 900px) {
+  .main {
+    margin: 10px auto;
+    padding: 0 16px 80px;
+    gap: 10px;
+  }
+
+  .back {
+    padding: 0;
+    border: 0;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "gallery"
+      "info"
+      "host";
+    gap: 10px;
+  }
+
+  .gallery {
+    height: 422px;
+  }
+}

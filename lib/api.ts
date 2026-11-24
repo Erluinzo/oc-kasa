@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 //runs on the Next server only: the back end sends no CORS headers, so the browser cannot call it
 const API_URL = process.env.API_URL ?? "http://localhost:4000";
 
@@ -54,3 +56,13 @@ export function getProperties() {
 export function getProperty(id: string) {
   return apiFetch<PropertyDetail>(`/api/properties/${encodeURIComponent(id)}`);
 }
+
+/**
+ * Finds a property by its slug ("appartement-cosy"): the API gives details by id only,
+ * so the id is taken from the list. Returns null when no property has this slug.
+ * cache(): the page and its metadata ask for the same property, the API is called once.
+ */
+export const getPropertyBySlug = cache(async (slug: string) => {
+  const property = (await getProperties()).find((item) => item.slug === slug);
+  return property ? getProperty(property.id) : null;
+});
