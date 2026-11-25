@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { BackIcon, LocationIcon, StarIcon } from "@/components/Icons";
 import button from "@/components/Button.module.css";
 import Carousel from "@/components/Carousel";
+import Collapse from "@/components/Collapse";
 import { getPropertyBySlug } from "@/lib/api";
 import styles from "./property.module.css";
 
@@ -57,8 +58,7 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
             </div>
             <p>{property.description}</p>
           </div>
-          <div className={styles.group}>
-            <h2 className={styles.groupTitle}>Équipements</h2>
+          <Collapse title="Équipements">
             <ul className={styles.equipments}>
               {property.equipments.map((item) => (
                 <li key={item} className={styles.tag}>
@@ -66,9 +66,8 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
                 </li>
               ))}
             </ul>
-          </div>
-          <div className={`${styles.group} ${styles.categories}`}>
-            <h2 className={styles.groupTitle}>Catégorie</h2>
+          </Collapse>
+          <Collapse title="Catégorie">
             <ul className={styles.tags}>
               {property.tags.map((tag) => (
                 <li key={tag} className={styles.tag}>
@@ -76,7 +75,7 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
                 </li>
               ))}
             </ul>
-          </div>
+          </Collapse>
         </section>
 
         <aside className={styles.host} aria-labelledby="host-title">

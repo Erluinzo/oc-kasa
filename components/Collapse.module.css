@@ -1,0 +1,54 @@
+.title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+
+/* the "back" arrow turned up when open, down when closed */
+.button svg {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.button[aria-expanded="false"] svg {
+  transform: rotate(-90deg);
+}
+
+/* the row goes from its full height (1fr) to 0: a smooth height change without knowing the height */
+.content {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.closed {
+  grid-template-rows: 0fr;
+}
+
+.inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Figma: 16px between the title and the list (here, so it also closes) */
+.body {
+  padding-top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .button svg {
+    transition: none;
+  }
+}

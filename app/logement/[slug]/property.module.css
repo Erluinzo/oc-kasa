@@ -95,21 +95,6 @@
   font-weight: 500;
 }
 
-.group {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.categories {
-  gap: 15px;
-}
-
-.groupTitle {
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .equipments,
 .tags {
   display: flex;
