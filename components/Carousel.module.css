@@ -1,0 +1,154 @@
+/* Figma desktop: big photo on the left, 4 small photos (2x2) on the right, 10px apart */
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  height: 358px;
+}
+
+/* only one photo: it takes the whole width */
+.single {
+  grid-template-columns: 1fr;
+}
+
+.main {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.active {
+  opacity: 1;
+}
+
+/* fixed frame: the photo fills it, centered and cut if needed */
+.slide img,
+.thumbButton img {
+  object-fit: cover;
+}
+
+/* Figma "call to action" with icon only: 32px red square */
+.arrow {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--main-red);
+  color: var(--white);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s;
+}
+
+.arrow:hover {
+  background: var(--dark-orange);
+}
+
+.previous {
+  left: 8px;
+}
+
+.next {
+  right: 8px;
+}
+
+/* same arrow as "previous", turned to the right */
+.next svg {
+  transform: scaleX(-1);
+}
+
+.counter {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: var(--white);
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+
+/* exactly 2 small photos: one per row. Odd number: the last one takes the whole row */
+@media (width >= 900px) {
+  .thumb:first-child:nth-last-child(2),
+  .thumb:last-child:nth-child(2),
+  .thumb:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
+
+.thumbButton {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 10px;
+  background: var(--grey-light);
+  cursor: pointer;
+}
+
+.thumbButton img {
+  transition: opacity 0.2s;
+}
+
+.thumbButton:hover img {
+  opacity: 0.8;
+}
+
+/* red frame on the small photo that is shown in big */
+.thumbButton[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--main-red);
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .thumbButton img {
+    transition: none;
+  }
+}
+
+/* Figma mobile: big photo 422px high, then a row of 4 small photos 109px high */
+@media (width < 900px) {
+  .carousel {
+    grid-template-columns: 1fr;
+    grid-template-rows: 422px 109px;
+    height: auto;
+  }
+
+  .single {
+    grid-template-rows: 422px;
+  }
+
+  .thumbs {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 8px;
+  }
+}

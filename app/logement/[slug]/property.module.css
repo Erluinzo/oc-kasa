@@ -44,14 +44,6 @@
 
 .gallery {
   grid-area: gallery;
-  position: relative;
-  height: 358px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.gallery img {
-  object-fit: cover;
 }
 
 .info,
@@ -215,9 +207,5 @@
       "info"
       "host";
     gap: 10px;
-  }
-
-  .gallery {
-    height: 422px;
   }
 }

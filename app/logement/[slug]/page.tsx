@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BackIcon, LocationIcon, StarIcon } from "@/components/Icons";
 import button from "@/components/Button.module.css";
+import Carousel from "@/components/Carousel";
 import { getPropertyBySlug } from "@/lib/api";
 import styles from "./property.module.css";
 
@@ -33,9 +34,12 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
       </div>
 
       <div className={styles.layout}>
-        {/* first photo for now: the carousel comes in the next sub-step */}
         <div className={styles.gallery}>
-          <Image src={property.pictures[0] ?? property.cover} alt={property.title} fill sizes="616px" preload />
+          {/* no photo list: the cover photo is shown instead */}
+          <Carousel
+            pictures={property.pictures.length > 0 ? property.pictures : [property.cover]}
+            title={property.title}
+          />
         </div>
 
         <section className={styles.info}>
