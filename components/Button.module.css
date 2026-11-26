@@ -19,3 +19,10 @@
 .button:focus-visible {
   background: var(--dark-orange);
 }
+
+/* Figma "Disabled" state, while a form is sent */
+.button:disabled {
+  background: var(--grey-light);
+  color: var(--grey-dark);
+  cursor: default;
+}

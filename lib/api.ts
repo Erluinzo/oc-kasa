@@ -66,3 +66,24 @@ export const getPropertyBySlug = cache(async (slug: string) => {
   const property = (await getProperties()).find((item) => item.slug === slug);
   return property ? getProperty(property.id) : null;
 });
+
+/**
+ * Logs in with an email and a password.
+ * @returns the login token (JWT), or null when the email or the password is wrong
+ * @throws Error when the API answers with another error
+ */
+export async function login(email: string, password: string) {
+  const res = await fetch(`${API_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+    cache: "no-store",
+  });
+  //400: a field is empty, 401: wrong email or password
+  if (res.status === 400 || res.status === 401) return null;
+  if (!res.ok) {
+    throw new Error(`API error ${res.status} on /auth/login`);
+  }
+  const data: { token: string } = await res.json();
+  return data.token;
+}
