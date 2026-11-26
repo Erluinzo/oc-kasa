@@ -87,3 +87,23 @@ export async function login(email: string, password: string) {
   const data: { token: string } = await res.json();
   return data.token;
 }
+
+/**
+ * Creates an account (role "client") and returns its login token.
+ * @returns the token, or null when an account already uses this email
+ * @throws Error when the API answers with another error
+ */
+export async function register(name: string, email: string, password: string) {
+  const res = await fetch(`${API_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password }),
+    cache: "no-store",
+  });
+  if (res.status === 409) return null;
+  if (!res.ok) {
+    throw new Error(`API error ${res.status} on /auth/register`);
+  }
+  const data: { token: string } = await res.json();
+  return data.token;
+}

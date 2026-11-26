@@ -1,9 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import button from "@/components/Button.module.css";
 import { logIn } from "./actions";
-import styles from "./login.module.css";
+import styles from "../account.module.css";
 
 /**
  * Email + password form. The check is done on the server (logIn action);
@@ -55,9 +56,14 @@ export default function LoginForm() {
           </p>
         )}
       </div>
-      <button type="submit" className={`${button.button} ${styles.submit}`} disabled={pending}>
-        {pending ? "Connexion…" : "Se connecter"}
-      </button>
+      <div className={styles.actions}>
+        <button type="submit" className={`${button.button} ${styles.submit}`} disabled={pending}>
+          {pending ? "Connexion…" : "Se connecter"}
+        </button>
+        <Link href="/inscription" className={styles.switch}>
+          Pas encore de compte ? Inscrivez-vous
+        </Link>
+      </div>
     </form>
   );
 }

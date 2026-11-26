@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LoginForm from "./LoginForm";
-import styles from "./login.module.css";
+import styles from "../account.module.css";
 
 export const metadata: Metadata = {
   title: "Connexion | Kasa",
