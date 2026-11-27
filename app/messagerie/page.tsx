@@ -6,6 +6,7 @@ import button from "@/components/Button.module.css";
 import { getConversation, getConversations } from "@/lib/api";
 import { getToken, readToken } from "@/lib/session";
 import Avatar from "./Avatar";
+import MessageForm from "./MessageForm";
 import { formatDay, formatListDate, formatTime } from "./dates";
 import styles from "./messages.module.css";
 
@@ -145,6 +146,7 @@ export default async function MessagesPage({ searchParams }: PageProps<"/message
                   </ol>
                 )}
               </div>
+              <MessageForm to={conversation.user.id} />
             </>
           ) : (
             <>

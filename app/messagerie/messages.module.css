@@ -233,6 +233,77 @@
   color: var(--white);
 }
 
+/* Figma: white bar under the messages, the send button inside the box (bottom right) */
+.composer {
+  /* Figma 21px with the 1px border */
+  padding: 20px 30px 21px;
+  border-top: 1px solid var(--grey-light);
+  background: var(--white);
+}
+
+.inputBox {
+  position: relative;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  height: 95px;
+  padding: 15px 56px 15px 15px;
+  border: 1px solid var(--grey-light);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--black);
+  font: inherit;
+  font-size: 12px;
+  resize: none;
+}
+
+.field::placeholder {
+  color: var(--grey-dark);
+  opacity: 1;
+}
+
+/* Figma "call to action" with icon only: 32px red square */
+.send {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--main-red);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.send:hover {
+  background: var(--dark-orange);
+}
+
+.send:disabled {
+  background: var(--grey-light);
+  color: var(--grey-dark);
+  cursor: default;
+}
+
+/* the back arrow turned up = "send" */
+.send svg {
+  transform: rotate(90deg);
+}
+
+.sendError {
+  margin-top: 8px;
+  color: var(--main-red);
+  font-size: 12px;
+}
+
 /* Figma mobile: the list, or the open conversation, full width */
 @media (width < 900px) {
   /* from the menu to the footer, not in the middle */
@@ -280,5 +351,21 @@
 
   .scroller {
     padding: 40px 8px;
+  }
+
+  /* stays at the bottom of the screen while the messages scroll */
+  .composer {
+    position: sticky;
+    bottom: 0;
+  }
+
+  .field {
+    height: 44px;
+    padding: 13px 48px 13px 14px;
+  }
+
+  .send {
+    right: 9px;
+    bottom: 6px;
   }
 }

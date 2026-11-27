@@ -59,14 +59,17 @@ export type Message = {
 
 /**
  * Calls an API route that needs the user to be logged in (token sent in the header).
+ * With a body it is a POST (the body is sent as JSON), else a GET.
  * @returns the JSON answer, or null when the API refuses the token (missing, wrong or too old)
  * Shows the 404 page when the API answers 404.
  * @throws Error when the API answers with another error
  */
-async function authFetch<T>(path: string, token: string): Promise<T | null> {
+async function authFetch<T>(path: string, token: string, body?: object): Promise<T | null> {
   const res = await fetch(API_URL + path, {
+    method: body ? "POST" : "GET",
     cache: "no-store",
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: body && JSON.stringify(body),
   });
   if (res.status === 401) return null;
   //the asked thing does not exist (for example an unknown user): 404 page
@@ -159,4 +162,13 @@ export function getConversations(token: string) {
  */
 export function getConversation(token: string, userId: number) {
   return authFetch<{ user: Host; messages: Message[] }>(`/api/messages/${userId}`, token);
+}
+
+/**
+ * Sends a message to another user.
+ * @param userId id of the other user
+ * @returns the message saved by the API, or null when the token is refused
+ */
+export function sendMessage(token: string, userId: number, content: string) {
+  return authFetch<Message>(`/api/messages/${userId}`, token, { content });
 }

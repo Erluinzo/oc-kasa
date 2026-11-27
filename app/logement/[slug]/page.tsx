@@ -97,10 +97,11 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
               <span className="sr-only">sur 5</span>
             </p>
           </div>
-          <Link href="/messagerie" className={`${button.button} ${styles.hostButton}`}>
+          {/* both open the conversation with the host (login first if needed) */}
+          <Link href={`/messagerie?avec=${host.id}`} className={`${button.button} ${styles.hostButton}`}>
             Contacter l’hôte
           </Link>
-          <Link href="/messagerie" className={`${button.button} ${styles.hostButton}`}>
+          <Link href={`/messagerie?avec=${host.id}`} className={`${button.button} ${styles.hostButton}`}>
             Envoyer un message
           </Link>
         </aside>
