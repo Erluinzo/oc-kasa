@@ -10,13 +10,14 @@ import styles from "../account.module.css";
  * Email + password form. The check is done on the server (logIn action);
  * the error is read aloud by screen readers (role="alert") and linked to the fields.
  */
-export default function LoginForm() {
+export default function LoginForm({ next }: { next?: string }) {
   const [state, formAction, pending] = useActionState(logIn, null);
   const invalid = state ? true : undefined;
   const describedBy = state ? "login-error" : undefined;
 
   return (
     <form action={formAction} className={styles.form}>
+      <input type="hidden" name="next" value={next ?? ""} />
       <div className={styles.fields}>
         <div className={styles.field}>
           <label htmlFor="email" className={styles.label}>

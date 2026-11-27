@@ -15,22 +15,6 @@
   border-bottom: 1px solid var(--grey-light);
 }
 
-/* Figma "call to action" with icon, grey version */
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 16px;
-  border-radius: 10px;
-  background: var(--grey-light);
-  color: var(--grey-dark);
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.backLink:hover {
-  color: var(--black);
-}
-
 /* photos and details on the left, host on the right; the photos get smaller first */
 .layout {
   display: grid;

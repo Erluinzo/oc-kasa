@@ -1,0 +1,284 @@
+/* Figma desktop: one block 1059x814 (list 376 + conversation), in the middle of the page */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+.box {
+  width: 100%;
+  max-width: 1059px;
+  height: 814px;
+  display: grid;
+  grid-template-columns: 376px minmax(0, 1fr);
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--light-orange);
+  box-shadow: 0 4px 14px 3px rgb(0 0 0 / 5%);
+}
+
+/* left: conversations */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  /* 8px on the right with the 1px border */
+  padding: 11px 7px 11px 8px;
+  overflow-y: auto;
+  border-right: 1px solid var(--grey-light);
+  background: var(--white);
+}
+
+.backBar {
+  padding: 16px 8px;
+}
+
+.title {
+  margin-bottom: 9px;
+  padding: 0 11px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.empty,
+.choose {
+  padding: 0 11px;
+  color: var(--grey-dark);
+}
+
+.conversations {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.conversation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 7px 9px;
+  border: 1px solid var(--grey-light);
+  background: var(--white);
+  transition: background-color 0.2s;
+}
+
+.conversation:hover,
+.conversation[aria-current="page"] {
+  background: var(--light-orange);
+}
+
+.avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  background: var(--grey-light);
+  color: var(--grey-dark);
+  font-weight: 500;
+}
+
+.large {
+  width: 45px;
+  height: 45px;
+  border-radius: 5.5px;
+}
+
+.small {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.summary {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+/* one line, cut with "…" */
+.preview {
+  overflow: hidden;
+  color: var(--grey-dark);
+  font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 6px 0;
+  color: var(--grey-dark);
+  font-size: 10px;
+}
+
+/* unread messages */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--main-red);
+}
+
+/* right: the open conversation */
+.thread {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.threadBack {
+  display: none;
+}
+
+.choose {
+  margin: auto;
+}
+
+.scroller {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 40px 42px;
+  overflow-y: auto;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* date between two days: "—— 03 septembre 2025 ——" */
+.day {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: var(--grey-dark);
+  font-size: 8px;
+}
+
+.day::before,
+.day::after {
+  content: "";
+  flex: 1;
+  border-top: 0.5px solid var(--grey-dark);
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* my messages on the right */
+.mine {
+  flex-direction: row-reverse;
+}
+
+.body {
+  max-width: 273px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mine .body {
+  align-items: flex-end;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--grey-dark);
+  font-size: 8px;
+}
+
+.separator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--grey-dark);
+}
+
+/* Figma: the corner next to the avatar is square */
+.bubble {
+  padding: 11px;
+  border: 1px solid var(--grey-light);
+  border-radius: 0 20px 20px;
+  background: var(--white);
+  font-size: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.mine .bubble {
+  border-radius: 20px 0 20px 20px;
+  background: var(--dark-orange);
+  color: var(--white);
+}
+
+/* Figma mobile: the list, or the open conversation, full width */
+@media (width < 900px) {
+  /* from the menu to the footer, not in the middle */
+  .main {
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .box {
+    max-width: none;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .list,
+  .thread {
+    flex: 1;
+  }
+
+  .list {
+    padding: 24px 0;
+    border: 0;
+    overflow: visible;
+  }
+
+  .conversations {
+    gap: 7px;
+  }
+
+  .open .list,
+  .box:not(.open) .thread {
+    display: none;
+  }
+
+  .threadBack {
+    display: block;
+    padding: 16px 8px;
+    border-bottom: 1px solid var(--grey-light);
+    background: var(--white);
+  }
+
+  .scroller {
+    padding: 40px 8px;
+  }
+}

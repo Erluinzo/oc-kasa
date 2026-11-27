@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 
 /**
  * Login page (Figma "Log In"): a white card with the title and the form.
+ * "?next=/messagerie": page to open after login (a page that needs it sends the user here).
  */
-export default function LoginPage() {
+export default async function LoginPage({ searchParams }: PageProps<"/connexion">) {
+  const { next } = await searchParams;
   return (
     <main className={styles.main}>
       <div className={styles.card}>
@@ -21,7 +23,7 @@ export default function LoginPage() {
             séjours uniques.
           </p>
         </div>
-        <LoginForm />
+        <LoginForm next={typeof next === "string" ? next : undefined} />
       </div>
     </main>
   );

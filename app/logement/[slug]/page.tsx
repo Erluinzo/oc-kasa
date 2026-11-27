@@ -28,7 +28,7 @@ export default async function PropertyPage({ params }: PageProps<"/logement/[slu
   return (
     <main className={styles.main}>
       <div className={styles.back}>
-        <Link href="/" className={styles.backLink}>
+        <Link href="/" className={button.back}>
           <BackIcon />
           Retour aux annonces
         </Link>

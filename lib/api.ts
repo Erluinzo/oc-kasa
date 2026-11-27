@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { notFound } from "next/navigation";
 
 //runs on the Next server only: the back end sends no CORS headers, so the browser cannot call it
 const API_URL = process.env.API_URL ?? "http://localhost:4000";
@@ -36,6 +37,40 @@ export type PropertyDetail = Property & {
  */
 async function apiFetch<T>(path: string): Promise<T> {
   const res = await fetch(API_URL + path, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error(`API error ${res.status} on ${path}`);
+  }
+  return res.json();
+}
+
+export type Conversation = {
+  user: Host;
+  last_message: { content: string; created_at: string; from_me: boolean };
+  unread: number;
+};
+
+export type Message = {
+  id: number;
+  content: string;
+  created_at: string;
+  from_me: boolean;
+  read: boolean;
+};
+
+/**
+ * Calls an API route that needs the user to be logged in (token sent in the header).
+ * @returns the JSON answer, or null when the API refuses the token (missing, wrong or too old)
+ * Shows the 404 page when the API answers 404.
+ * @throws Error when the API answers with another error
+ */
+async function authFetch<T>(path: string, token: string): Promise<T | null> {
+  const res = await fetch(API_URL + path, {
+    cache: "no-store",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) return null;
+  //the asked thing does not exist (for example an unknown user): 404 page
+  if (res.status === 404) notFound();
   if (!res.ok) {
     throw new Error(`API error ${res.status} on ${path}`);
   }
@@ -106,4 +141,22 @@ export async function register(name: string, email: string, password: string) {
   }
   const data: { token: string } = await res.json();
   return data.token;
+}
+
+/**
+ * Gets the conversations of the logged-in user, newest first.
+ * @returns the list, or null when the token is refused
+ */
+export function getConversations(token: string) {
+  return authFetch<Conversation[]>("/api/messages", token);
+}
+
+/**
+ * Gets the other user and all messages with them, oldest first.
+ * The API marks the received messages as read.
+ * @param userId id of the other user
+ * @returns the conversation, or null when the token is refused
+ */
+export function getConversation(token: string, userId: number) {
+  return authFetch<{ user: Host; messages: Message[] }>(`/api/messages/${userId}`, token);
 }
