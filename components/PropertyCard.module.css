@@ -35,6 +35,19 @@
   border-radius: 5px;
   background: var(--grey-light);
   color: var(--grey-dark);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.heart:hover {
+  color: var(--main-red);
+}
+
+/* Figma "Page favoris": red button, white heart */
+.favorite,
+.favorite:hover {
+  background: var(--main-red);
+  color: var(--white);
 }
 
 /* white part 176px high: title and place at the top, price at the bottom */

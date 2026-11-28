@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { FavoritesProvider } from "@/components/Favorites";
 import "./globals.css";
 
 //next/font downloads Inter at build time and serves it from our own site
@@ -16,9 +17,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={inter.variable}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <FavoritesProvider>
+          <Header />
+          {children}
+          <Footer />
+        </FavoritesProvider>
       </body>
     </html>
   );

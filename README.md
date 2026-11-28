@@ -38,7 +38,7 @@ API_URL=http://localhost:4000
 
 ## Tests
 
-Unit tests use Vitest and Testing Library. Each test file sits next to its component (`components/Carousel.test.tsx`).
+Unit tests use Vitest and Testing Library. Each test file sits next to its component: `components/Carousel.test.tsx` (photo carousel) and `components/Favorites.test.tsx` (favorites saved in localStorage).
 
 ```bash
 npm test
